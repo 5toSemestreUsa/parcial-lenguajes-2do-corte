@@ -5,6 +5,7 @@
 ```
 $ python3 -m venv venv
 $ source venv/bin/activate
+$ pip3 install -r requirements.txt
 ```
 
 # Punto 1 - Calculadora de fraccionarios
