@@ -1,6 +1,11 @@
 
 # Dependencies
 ```antlr4-python3-runtime==4.13.1```
+## Intalacion de dependencias
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
 
 # Punto 1 - Calculadora de fraccionarios
 
@@ -18,7 +23,7 @@ tambien es posible realizar algunas operaciones mas complejas por ejemplo:
 >> (5/3 / ( 3/6 / 9/3 ) * 5/2 - 6/145 * 2/1)
 3613/145
 ```
-# How to run
+## How to run
 ```
 $ cd Pt1
 $ python3 calc.py
@@ -35,7 +40,7 @@ $ type your expression
 Este programa lo que realiza es ejecutar codigo Python3 dentro de MAP y FILTER, de manera que simula su funcionamiento desde ANTLR4.
 De forma que la misma sintaxis de python3 puede ser usada para realizar operaciones y ver su resultado como una lista
 
-# How to run MAP  
+## How to run MAP  
 ```
 $ cd Pt1
 $ python3 MapMain.py
@@ -59,7 +64,7 @@ $ python3 MapMain.py
 ```
 
 
-# How to run FILTER
+## How to run FILTER
 ```
 
 $ cd Pt1
