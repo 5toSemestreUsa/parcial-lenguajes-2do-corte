@@ -10,18 +10,21 @@ stat:   mapFunction
 
 mapFunction: 
       'map' '(' lambdaExpr ',' iterable ')' 
-    | 'map' '(' ID ',' iterable ')' ;
+    | 'map' '(' function ',' iterable ')' ;
 
 filterFunction: 
       'filter' '(' lambdaExpr ',' iterable ')' 
-    | 'filter' '(' ID ',' iterable ')' ;
+    | 'filter' '(' function ',' iterable ')' ;
 
 lambdaExpr: 
     |   'lambda' ID   ':' function;
 
-function: ID op expr 
+function:
+    expr
+    | expr op
+    | expr op expr (op expr)*
     | functionCall
-    | ID'['INT']' (op lambdaExpr)?;
+    | expr'['expr']' (op lambdaExpr)?;
 
 functionCall: 
     | ID '(' expr (',' expr )+ ','? ')'
@@ -34,6 +37,7 @@ op:
     | '*' 
     | '**' 
     | '.'ID'()'
+    | '.'ID
     | '==' 
     | '!=' 
     | '<' 
@@ -55,15 +59,13 @@ list:
 
 
 dict : '{' ( key ':' expr )* '}';
-set : '{' expr* '}';
-key: 
-        '"'  *  '"' 
-    |   '\'' * '\'';
+set : '{' elements* '}';
+key: STRING;
 
 elements: expr (',' expr)* ','?;
 
 
-expr: INT | FLOAT | STRING | dict | list | ID;
+expr: INT | FLOAT | STRING | dict | list | ID ;
 
 INT: [0-9]+;
 ID: [a-zA-Z]+;
@@ -75,4 +77,4 @@ DIV :   '/' ;
 ADD :   '+' ;
 SUB :   '-' ;
 NEWLINE:'\r'? '\n' ;
-WS  :   [\t]+ -> skip ;
+WS  :   [ \t]+ -> skip ;

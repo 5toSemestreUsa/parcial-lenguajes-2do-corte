@@ -62,6 +62,15 @@ class MapListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MapParser#functionCall.
+    def enterFunctionCall(self, ctx:MapParser.FunctionCallContext):
+        pass
+
+    # Exit a parse tree produced by MapParser#functionCall.
+    def exitFunctionCall(self, ctx:MapParser.FunctionCallContext):
+        pass
+
+
     # Enter a parse tree produced by MapParser#op.
     def enterOp(self, ctx:MapParser.OpContext):
         pass
@@ -98,6 +107,15 @@ class MapListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MapParser#set.
+    def enterSet(self, ctx:MapParser.SetContext):
+        pass
+
+    # Exit a parse tree produced by MapParser#set.
+    def exitSet(self, ctx:MapParser.SetContext):
+        pass
+
+
     # Enter a parse tree produced by MapParser#key.
     def enterKey(self, ctx:MapParser.KeyContext):
         pass
@@ -113,15 +131,6 @@ class MapListener(ParseTreeListener):
 
     # Exit a parse tree produced by MapParser#elements.
     def exitElements(self, ctx:MapParser.ElementsContext):
-        pass
-
-
-    # Enter a parse tree produced by MapParser#var.
-    def enterVar(self, ctx:MapParser.VarContext):
-        pass
-
-    # Exit a parse tree produced by MapParser#var.
-    def exitVar(self, ctx:MapParser.VarContext):
         pass
 
 

@@ -14,49 +14,62 @@ class MapVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-
     # Visit a parse tree produced by MapParser#stat.
     def visitStat(self, ctx:MapParser.StatContext):
-        
         return self.visitChildren(ctx)
-
 
 
     # Visit a parse tree produced by MapParser#mapFunction.
     def visitMapFunction(self, ctx:MapParser.MapFunctionContext):
-        
         if ctx.lambdaExpr():
             var = ctx.lambdaExpr().ID().getText()
             functionBody = ctx.lambdaExpr().function().getText()
             iterable = ctx.iterable().getText()
-            
-            print(iterable)
-            
             code = f"list(map(lambda {var} : {functionBody} , {iterable} ))"
-            print(code)
+            
             print(eval(code))
             
-        if ctx.ID():
-            ID = ctx.ID().getText()
-            code  = f"list(map( {ID} , {iterable} ))"
-            print(code)
+        if ctx.function():
+            function = ctx.function().getText()
+            iterable = ctx.iterable().getText()
+            code  = f"list(map( {function} , {iterable} ))"
             print(eval(code))
-            
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by MapParser#filterFunction.
     def visitFilterFunction(self, ctx:MapParser.FilterFunctionContext):
+        if ctx.lambdaExpr():
+            var = ctx.lambdaExpr().ID().getText()
+            functionBody = ctx.lambdaExpr().function().getText()
+            iterable = ctx.iterable().getText()
+            
+            
+            code = f"list(filter(lambda {var} : {functionBody} , {iterable} ))"
+            
+            print(eval(code))
+            
+        if ctx.function():
+            function = ctx.function().getText()
+            iterable = ctx.iterable().getText()
+            code  = f"list(filter( {function} , {iterable} ))"
+            print(code)
+            print(eval(code))
         return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by MapParser#lambdaExpr.
     def visitLambdaExpr(self, ctx:MapParser.LambdaExprContext):
-        
         return self.visitChildren(ctx)
+
 
     # Visit a parse tree produced by MapParser#function.
     def visitFunction(self, ctx:MapParser.FunctionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MapParser#functionCall.
+    def visitFunctionCall(self, ctx:MapParser.FunctionCallContext):
         return self.visitChildren(ctx)
 
 
@@ -67,8 +80,6 @@ class MapVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MapParser#iterable.
     def visitIterable(self, ctx:MapParser.IterableContext):
-        
-        
         return self.visitChildren(ctx)
 
 
@@ -82,6 +93,11 @@ class MapVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by MapParser#set.
+    def visitSet(self, ctx:MapParser.SetContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by MapParser#key.
     def visitKey(self, ctx:MapParser.KeyContext):
         return self.visitChildren(ctx)
@@ -89,12 +105,6 @@ class MapVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MapParser#elements.
     def visitElements(self, ctx:MapParser.ElementsContext):
-        
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MapParser#var.
-    def visitVar(self, ctx:MapParser.VarContext):
         return self.visitChildren(ctx)
 
 

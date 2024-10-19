@@ -1,0 +1,31 @@
+MAP:
+
+USANDO Lambda
+map(lambda x: x + 2, [1, 2, 3, 4])
+map(lambda x: x ** 2, (1, 2, 3, 4))
+map(lambda x: x % 2 == 0, (1, 2, 3, 4))
+map(lambda x: x*2, ("1", "2", "3", "4"))
+map(lambda x: x*5, {1,"si",2,"no",3,4,5})
+map(lambda x: x["item"], [{"item":5} ,{"item":12} , {"item":[1,2,3]} , {"item":"hola"} ])
+
+USANDO funciones estaticas
+map(int, ("1", "2", "3", "4"))
+map(float, ("1", "2", "3", "4"))
+map(str.upper, ("aaaAaa", "bbbBbbb", "ccccCcccc", "dddDddd"))
+map(str.lower, ("aaaAaa", "bbbBbbb", "ccccCcccc", "dddDddd"))
+
+
+
+FILTER:
+filter(lambda x: x % 2 == 0, (1, 2, 3, 4))
+filter(lambda x: True, (1, 2, 3, 4))
+filter(lambda x: False, (1, 2, 3, 4))
+
+
+
+
+
+
+
+
+
